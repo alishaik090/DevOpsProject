@@ -1,17 +1,17 @@
 pipeline {
   agent any
   environment {
-    IMAGE_NAME = "react-ecommerce"
+    IMAGE = "react-ecommerce"
   }
 
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/yourusername/react-ecommerce-devops.git'
+        git 'https://github.com/yourusername/react-ecommerce.git'
       }
     }
 
-    stage('Install & Build') {
+    stage('Install and Build') {
       steps {
         sh 'npm install'
         sh 'npm run build'
@@ -20,7 +20,7 @@ pipeline {
 
     stage('Docker Build') {
       steps {
-        sh 'docker build -t $IMAGE_NAME .'
+        sh 'docker build -t $IMAGE .'
       }
     }
 
@@ -29,7 +29,7 @@ pipeline {
         sh '''
           docker stop react-ecommerce || true
           docker rm react-ecommerce || true
-          docker run -d -p 8080:80 --name react-ecommerce $IMAGE_NAME
+          docker run -d -p 8080:80 --name react-ecommerce $IMAGE
         '''
       }
     }
@@ -37,14 +37,14 @@ pipeline {
 
   post {
     success {
-      mail to: 'youremail@example.com',
-           subject: '✅ React E-commerce Build Successful',
-           body: 'Website deployed successfully on port 8080!'
+      mail to: 'youremail@gmail.com',
+           subject: '✅ Jenkins Build Successful',
+           body: 'Your React app has been deployed successfully!'
     }
     failure {
-      mail to: 'youremail@example.com',
-           subject: '❌ Build Failed',
-           body: 'Please check Jenkins logs.'
+      mail to: 'youremail@gmail.com',
+           subject: '❌ Jenkins Build Failed',
+           body: 'Check logs at: ${env.BUILD_URL}'
     }
   }
 }
