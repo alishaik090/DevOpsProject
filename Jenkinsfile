@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment {
     IMAGE = "react-ecommerce"
-  }
+  } 
 
   stages {
     stage('Checkout') {
