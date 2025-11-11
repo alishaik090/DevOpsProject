@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/yourusername/react-ecommerce.git'
+        git 'https://github.com/alishaik090/DevOpsProject'
       }
     }
 
