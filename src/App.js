@@ -26,7 +26,7 @@ function App() {
           padding: "8px",
           marginBottom: "20px",
           width: "200px",
-          borderRadius: "5px",
+          borderRadius: "10px",
           border: "1px solid #ccc"
         }}
       />
