@@ -7,7 +7,9 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/alishaik090/DevOpsProject.git'
+         git branch: 'main',
+            credentialsId: 'c42f8177-365a-4988-9cd1-d175ce979ce4',  // 👈 use the ID from Jenkins
+            url: 'https://github.com/alishaik090/DevOpsProject.git'
       }
     }
 
