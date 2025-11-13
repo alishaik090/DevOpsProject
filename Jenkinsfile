@@ -31,7 +31,7 @@ pipeline {
                 bat '''
                 docker stop react-ecommerce || exit 0
                 docker rm react-ecommerce || exit 0
-                docker run -d -p 8080:80 --name react-ecommerce %IMAGE%
+                docker run -d -p 3000:80 --name react-ecommerce %IMAGE%
                 '''
             }
         }
